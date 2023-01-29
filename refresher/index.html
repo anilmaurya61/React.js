@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function hello(){
+            console.log("Hey Anil");
+        }
+        let obj = {
+            r:34,
+            m: 64,
+            func: function myfunc(number){
+                console.log("The number is "+ number);
+            }
+        }
+        document.addEventListener("click",function click(){
+            console.log("clicked");
+            // alert("hello");
+            let cnf = confirm("Are you sure?");
+            console.log(cnf);
+        })
+
+        let arr = [34,21,23];
+        let myfunc = (number)=>{
+            console.log("This is number "+ this);
+        }
+        myfunc();
+        setTimeout(()=>{
+            console.log("yayyy");
+        }, 3000);
+        console.log(" mai neeche wali line hoon..");
+    </script>
+</head>
+<body>
+    Hi I am Learning react Js
+</body>
+</html>
