@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Index.css'
-export default function TextForm() {
+export default function TextForm(props) {
   const handleremoveText =()=>{
     let str=text.replace(/\s+/g, ' ').trim();
     setText(str);
@@ -22,7 +22,7 @@ export default function TextForm() {
   const withoutspaces =()=>{
     let cnt=0;
     for(let i=0;i<text.length;i++){
-      if(text1[i]==' '){
+      if(text1[i]===' '){
         cnt++;
       }
     }
@@ -56,14 +56,14 @@ export default function TextForm() {
   const [text1,setText1] = useState('');
   const [cText,setcText] = useState("Copy Text");
   return (
-    <div className="mb-3 textform">
-      <label for="exampleFormControlTextarea1" className="form-label texttitle">Enter the text to analyze below</label>
-      <textarea className="form-control" value={text} onChange={handleonchange} onClick={handleOnclick} id="exampleFormControlTextarea1" rows="6"></textarea>
-      <button type="button" class="btn btn-primary my-2" onClick={changeUPtext}>Convert to Uppercase</button>
-      <button type="button" class="btn btn-primary my-2 mx-2" onClick={changeLotext}>Convert to Lowercase</button>
-      <button type="button" class="btn btn-primary my-2" onClick={clearText}>Clear Text</button>
-      <button type="button" class="btn btn-primary my-2 mx-2" onClick={handleremoveText}>Remove Extra Space</button>
-      <button type="button" class="btn btn-primary my-2" onClick={handleCopyText}>{cText}</button>
+    <div className={`mb-3 textform text-${props.mode === 'light'?'dark':'light'}`}>
+      <label htmlFor="exampleFormControlTextarea1 " className="form-label texttitle">Enter the text to analyze below</label>
+      <textarea className="form-control" style={{backgroundColor:props.mode ==='dark'?'grey':'white'}} value={text} onChange={handleonchange} onClick={handleOnclick} id="exampleFormControlTextarea1" rows="6"></textarea>
+      <button type="button" className="btn btn-primary my-2" onClick={changeUPtext}>Convert to Uppercase</button>
+      <button type="button" className="btn btn-primary my-2 mx-2" onClick={changeLotext}>Convert to Lowercase</button>
+      <button type="button" className="btn btn-primary my-2" onClick={clearText}>Clear Text</button>
+      <button type="button" className="btn btn-primary my-2 mx-2" onClick={handleremoveText}>Remove Extra Space</button>
+      <button type="button" className="btn btn-primary my-2" onClick={handleCopyText}>{cText}</button>
       <p>Number of characters (including spaces): {text1.length}</p>
       <p>Number of characters (without spaces): {withoutspaces()}</p>
       <p>Number of Words: {previewOut()}</p>
